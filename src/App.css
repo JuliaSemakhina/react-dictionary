@@ -1,38 +1,183 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&family=Sora:wght@100;300;400&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+section {
+  font-family: 'Poppins', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  background: url('https://images.pexels.com/photos/3760323/pexels-photo-3760323.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') center;
+  background-size: cover;
+  height: 50vh;
+  font-family: 'Sora', sans-serif;
+}
+
+.search-bar {
+  width: 70vw;
+  padding: 3em;
+  margin: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.search-bar h1 {
+  font-size: 2rem;
+  padding: 0;
+  margin: 20px 15px;
+  font-weight: 400;
+  text-align: center;
+  color: #006a44;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.submit-field {
+  display: flex;
+  height: 60px;
+  width: 60px;
+  padding: 3px;
+  border: 2px solid   rgb(193, 39, 45);
+  border-radius: 100vh;
+  position: relative;
+  transition: width 500ms cubic-bezier(.18, .89, .32, 1.12);
+  overflow: hidden;
+}
+
+.submit-field:focus-within {
+  width: 100%;
+}
+
+.submit-field:focus-within .search-bar__submit{
+  background: rgb(193, 39, 45);
+  color: #fff;
+}
+
+.submit-field:focus-within .search-bar__input{
+  opacity: 1;
+  cursor: initial;
+  background: transparent;
+  width: calc(100% - 60px);
+}
+
+.submit-field:focus-within .search-bar__submit:focus,
+.submit-field:focus-within .search-bar__submit:hover
+ {
+  outline: 0;
+  box-shadow: 0 0 10px rgba(0,0,0, .35);
+}
+
+.search-bar__input{
+  flex-grow: 1;
+  font-size: 1.5rem;
+  padding: 0 .5em;
+  border: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  line-height: calc(60px - 3px);
+  opacity: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+.search-bar__input:focus {
+  outline: 0;
+}
+
+
+.search-bar__submit{
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  width: calc(60px - 10px);
+  height: calc(60px - 10px);
+  margin-left: auto;
+  transition: all 150ms ease-in-out;
+}
+
+section.output {
+  padding: 1.5rem;
+  width: 65vw;
+  margin: auto;
+}
+
+.output h1 {
+  color: #006a44;
+}
+
+p.speech{
+  font-style: italic;
+}
+
+.synonyms {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: #006a44;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+audio {
+  outline: none;
+}
+
+@media (max-width: 860px) {
+
+  .search-bar {
+    width: 95vw;
   }
-  to {
-    transform: rotate(360deg);
+
+  .search-bar__input, .search-bar__submit {
+    font-size: .9rem;
   }
+
+  .submit-field {
+    height: 45px;
+    width: 45px;
+  }
+
+  .search-bar__submit {
+    width: calc(45px - 10px);
+    height: calc(45px - 10px);
+  }
+
+  .submit-field:focus-within .search-bar__input{
+    width: calc(100%-45px);
+  }
+
+  .search-bar h1 {
+    font-size: 1.5rem;
+  }
+
+  section.output {
+    font-size: .9rem;
+    padding: 0.85rem;
+    width: 95vw;
+  }
+
+  .synonyms {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }
